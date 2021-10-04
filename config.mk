@@ -150,7 +150,9 @@ CPPFLAGS += -DLOCAL_BUILD
 CPPFLAGS += -D'DRAGEN_OS_VERSION="$(DRAGEN_OS_VERSION)"' 
 CPPFLAGS += -DVERSION_STRING="$(VERSION_STRING)"
 CXXFLAGS+=$(CXXWARNINGS) $(CXXSTD)
-CFLAGS+=$(CWARNINGS)
+# Use gnu99 instead of c99, as strdup is not part of C99:
+# https://stackoverflow.com/questions/26284110/strdup-confused-about-warnings-implicit-declaration-makes-pointer-with
+CFLAGS+=$(CWARNINGS) -std=gnu99
 LDFLAGS?=
 
 ifneq (,$(BOOST_INCLUDEDIR))
