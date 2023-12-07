@@ -28,7 +28,7 @@ clean:
 .PHONY: help
 help: $(DRAGEN_OS_ROOT_DIR)/README.md
 	cat $<
-	
+
 .PHONY: help-targets
 help-targets:
 	@$(ECHO) 'Default:   all'
