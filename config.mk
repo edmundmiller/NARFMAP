@@ -54,24 +54,6 @@ endif # ifneq(,$(GTEST_ROOT))
 
 ############################################################
 ##
-## Bamtools
-## Not needed anymore
-##
-############################################################
-#BAMTOOLS_ROOT?=/opt/bamtools/bamtools-2.4.1
-#BAMTOOLS_INCLUDEDIR?=$(BAMTOOLS_ROOT)/include
-#BAMTOOLS_LIBDIR?=$(BAMTOOLS_ROOT)/lib
-
-#ifeq (,$(realpath $(BAMTOOLS_INCLUDEDIR)))
-#$(error BAMTOOLS_INCLUDEDIR not available: $(BAMTOOLS_INCLUDEDIR): specify either BAMTOOLS_ROOT or BAMTOOLS_INCLUDEDIR)
-#endif
-
-#ifeq (,$(realpath $(BAMTOOLS_LIBDIR)))
-#$(error BAMTOOLS_LIBDIR not available: $(BAMTOOLS_LIBDIR): specify either BAMTOOLS_ROOT or BAMTOOLS_LIBDIR)
-#endif
-
-############################################################
-##
 ## Tools
 ##
 ############################################################
