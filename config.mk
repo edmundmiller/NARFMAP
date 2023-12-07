@@ -209,8 +209,6 @@ else
 LDFLAGS+= -lstdc++
 endif
 
-#LDFLAGS+= -lz -lstdc++ -lrt -lgomp -lpthread
-
 ifneq (,$(GTEST_INCLUDEDIR))
 GTEST_CPPFLAGS+= -I $(GTEST_INCLUDEDIR)
 endif
