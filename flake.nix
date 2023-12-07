@@ -56,6 +56,8 @@
             BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
             GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
             GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
+            GTEST_ROOT = "${pkgs.gtest}";
+            LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
           };
         };
       };
