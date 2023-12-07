@@ -33,7 +33,14 @@
           modules = [
             {
               # https://devenv.sh/reference/options/
-              packages = [pkgs.boost pkgs.gtest];
+              packages = [
+                (pkgs.boost.override
+                  {
+                    enableShared = false;
+                    enabledStatic = true;
+                  })
+                pkgs.gtest
+              ];
               languages.cplusplus.enable = true;
             }
           ];
