@@ -121,8 +121,9 @@ endif
 # version must be tagged in the git repo
 VERSION_STRING?=$(shell git describe --tags --always --abbrev=8 2> /dev/null || echo "UNKNOWN")
 
-CXXWARNINGS=-Werror -Wno-unused-variable -Wno-free-nonheap-object -Wno-parentheses
-CWARNINGS?=-Werror -Wno-unused-variable -Wno-unused-function -Wno-format-truncation -Wno-unknown-warning-option -Wno-unused-but-set-variable
+# HACK Removes -Werror that causes a failure with include/boost/iostreams/filter/gzip.hpp
+CXXWARNINGS=-Wno-unused-variable -Wno-free-nonheap-object -Wno-parentheses
+CWARNINGS?=-Wno-unused-variable -Wno-unused-function -Wno-format-truncation -Wno-unknown-warning-option -Wno-unused-but-set-variable
 CXXSTD?=-std=c++17
 
 
