@@ -16,7 +16,11 @@
     extra-substituters = "https://devenv.cachix.org";
   };
 
-  outputs = inputs @ {flake-parts, ...}:
+  outputs = inputs @ {
+    flake-parts,
+    nci,
+    ...
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
@@ -29,7 +33,9 @@
         config,
         pkgs,
         ...
-      }: {
+      }: let
+        crateOutputs = config.nci.outputs."my-crate";
+      in {
         packages.default = pkgs.stdenv.mkDerivation rec {
           pname = "NARFMAP";
           version = "1.3.1";
@@ -68,6 +74,10 @@
             maintainers = [maintainers.breakds];
           };
         };
+
+        packages.narf = crateOutputs.packages.release;
+
+        devShells.narf = crateOutputs.devShell;
 
         devenv.shells.default = {
           name = "NARFMAP";
