@@ -45,14 +45,6 @@ endif # ifneq (,$(BOOST_ROOT))
 
 BOOST_LIBRARIES := system filesystem date_time thread iostreams regex program_options
 
-############################################################
-##
-## Boost Libraries
-## Should work with vanilla Boost versions for CentOs 7 (1.53),
-## CentOs 8 (1.66), Ubuntu 16.04.6 LTS (1.58)
-##
-############################################################
-
 HAS_GTEST?=1
 
 ifneq (,$(GTEST_ROOT))
