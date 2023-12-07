@@ -16,6 +16,7 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/iostreams/device/back_inserter.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <cerrno>
 #include <cstring>
@@ -26,7 +27,6 @@
 #include "align/SinglePicker.hpp"
 #include "bam/BamBlockReader.hpp"
 #include "bam/Tokenizer.hpp"
-#include "boost/iostreams/filter/gzip.hpp"
 #include "common/Debug.hpp"
 #include "common/Threads.hpp"
 #include "fastq/FastqBlockReader.hpp"
