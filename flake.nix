@@ -48,6 +48,7 @@
           # https://devenv.sh/reference/options/
           packages = [
             pkgs.boost
+            pkgs.gnumake
             pkgs.gtest
             pkgs.zlib
           ];
