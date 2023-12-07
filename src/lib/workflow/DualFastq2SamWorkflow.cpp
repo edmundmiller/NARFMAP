@@ -12,26 +12,22 @@
  **
  **/
 
+#include <boost/iostreams/device/back_inserter.hpp>
 #include <fstream>
 #include <limits>
-
-#include <boost/iostreams/device/back_inserter.hpp>
 // #include <boost/iostreams/device/file.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 
-#include "common/Debug.hpp"
-#include "common/Threads.hpp"
-#include "mapping_stats.hpp"
-
 #include "align/Aligner.hpp"
 #include "align/SinglePicker.hpp"
+#include "common/Debug.hpp"
+#include "common/Threads.hpp"
 #include "fastq/Tokenizer.hpp"
 #include "io/Fastq2ReadTransformer.hpp"
+#include "mapping_stats.hpp"
 #include "sam/SamGenerator.hpp"
-
 #include "workflow/DualFastq2SamWorkflow.hpp"
-
 #include "workflow/alignment/AlignmentUtils.hpp"
 
 namespace dragenos {
@@ -305,11 +301,11 @@ void DualFastq2SamWorkflow::alignDualFastqBlock(
         {
           common::unlock_guard<common::ThreadPool::lock_type> unlock(lock);
           boost::iostreams::filtering_istream                 inputR1;
-          inputR1.push(boost::iostreams::basic_array_source<char>{&r1Block.front(),
-                                                                  &r1Block.front() + r1Block.size()});
+          inputR1.push(boost::iostreams::basic_array_source<char>{
+              &r1Block.front(), &r1Block.front() + r1Block.size()});
           boost::iostreams::filtering_istream inputR2;
-          inputR2.push(boost::iostreams::basic_array_source<char>{&r2Block.front(),
-                                                                  &r2Block.front() + r2Block.size()});
+          inputR2.push(boost::iostreams::basic_array_source<char>{
+              &r2Block.front(), &r2Block.front() + r2Block.size()});
           insertSizeParameters = requestInsertSizeInfo(insertSizeDistribution, inputR1, inputR2);
         }
         assert(blockToGetInsertSizes_ == ourBlock);
@@ -325,11 +321,11 @@ void DualFastq2SamWorkflow::alignDualFastqBlock(
         {
           common::unlock_guard<common::ThreadPool::lock_type> unlock(lock);
           boost::iostreams::filtering_istream                 inputR1;
-          inputR1.push(boost::iostreams::basic_array_source<char>{&r1Block.front(),
-                                                                  &r1Block.front() + r1Block.size()});
+          inputR1.push(boost::iostreams::basic_array_source<char>{
+              &r1Block.front(), &r1Block.front() + r1Block.size()});
           boost::iostreams::filtering_istream inputR2;
-          inputR2.push(boost::iostreams::basic_array_source<char>{&r2Block.front(),
-                                                                  &r2Block.front() + r2Block.size()});
+          inputR2.push(boost::iostreams::basic_array_source<char>{
+              &r2Block.front(), &r2Block.front() + r2Block.size()});
           insBuffer.clear();
           tmpBuffer.clear();
 

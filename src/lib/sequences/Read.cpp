@@ -12,6 +12,8 @@
  **
  **/
 
+#include "sequences/Read.hpp"
+
 #include <emmintrin.h>
 
 #include <cassert>
@@ -19,7 +21,6 @@
 #include <vector>
 
 #include "common/Exceptions.hpp"
-#include "sequences/Read.hpp"
 
 namespace dragenos {
 namespace sequences {

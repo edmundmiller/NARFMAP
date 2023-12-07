@@ -28,8 +28,8 @@ namespace align {
 
 class Aligner {
 public:
-  Aligner()               = delete;
-  Aligner(const Aligner&) = delete;
+  Aligner()                          = delete;
+  Aligner(const Aligner&)            = delete;
   Aligner& operator=(const Aligner&) = delete;
   // Aligner(Aligner&&) = delete;
   //Aligner &operator=(Aligner&&) = delete;

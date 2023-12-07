@@ -12,17 +12,17 @@
  **
  **/
 
-#include <stdio.h>
+#include "common/SystemCompatibility.hpp"
 
-#include <iostream>
-#include <new>
+#include <stdio.h>
 
 #include <boost/format.hpp>
 #include <boost/thread.hpp>
+#include <iostream>
+#include <new>
 
 #include "common/Debug.hpp"
 #include "common/Exceptions.hpp"
-#include "common/SystemCompatibility.hpp"
 
 // TODO: add a proper configuration system as needed
 #define HAVE_SIGNAL_H

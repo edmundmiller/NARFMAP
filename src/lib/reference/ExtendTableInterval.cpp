@@ -30,8 +30,7 @@ ExtendTableInterval::ExtendTableInterval(I begin, I end)
 }
 
 // explicit instantiation for vectors and pointers
-template ExtendTableInterval::ExtendTableInterval(
-    const HashRecord* begin, const HashRecord* end);
+template ExtendTableInterval::ExtendTableInterval(const HashRecord* begin, const HashRecord* end);
 template ExtendTableInterval::ExtendTableInterval(
     std::vector<HashRecord>::const_iterator begin, std::vector<HashRecord>::const_iterator end);
 template ExtendTableInterval::ExtendTableInterval(

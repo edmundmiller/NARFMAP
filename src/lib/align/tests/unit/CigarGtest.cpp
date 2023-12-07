@@ -1,14 +1,14 @@
-#include "gtest/gtest.h"
-
 #include <algorithm>
 #include <type_traits>
 
 #include "align/Cigar.hpp"
+#include "gtest/gtest.h"
 
 TEST(Cigar, OperationNames)
 {
   using dragenos::align::Cigar;
-  ASSERT_EQ((unsigned long)Cigar::SEQUENCE_MISMATCH + 1, std::extent<decltype(Cigar::OPERATION_NAMES)>::value);
+  ASSERT_EQ(
+      (unsigned long)Cigar::SEQUENCE_MISMATCH + 1, std::extent<decltype(Cigar::OPERATION_NAMES)>::value);
   ASSERT_EQ('M', Cigar::getOperationName(Cigar::ALIGNMENT_MATCH));
   ASSERT_EQ('I', Cigar::getOperationName(Cigar::INSERT));
   ASSERT_EQ('D', Cigar::getOperationName(Cigar::DELETE));

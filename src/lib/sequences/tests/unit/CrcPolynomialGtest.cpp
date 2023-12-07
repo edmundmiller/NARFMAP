@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-
 #include "sequences/CrcPolynomial.hpp"
 
 typedef dragenos::sequences::CrcPolynomial crc_polynomial_t;

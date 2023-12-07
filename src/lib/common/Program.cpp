@@ -12,12 +12,11 @@
  **
  **/
 
-#include <fstream>
+#include "common/Program.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
-
-#include "common/Program.hpp"
+#include <fstream>
 
 namespace dragenos {
 namespace common {

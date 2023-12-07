@@ -16,9 +16,8 @@
 #define MAP_MAPPER_HPP
 
 #include <bitset>
-#include <vector>
-
 #include <boost/format.hpp>
+#include <vector>
 
 #include "BestIntervalTracker.hpp"
 #include "common/Exceptions.hpp"

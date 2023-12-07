@@ -28,9 +28,8 @@
 //
 #include "common/hash_generation/gen_hash_table.h"
 #include "common/hash_generation/hash_table_compress.h"
-#include "workflow/GenHashTableWorkflow.hpp"
-
 #include "common/public/linux_utils.hpp"
+#include "workflow/GenHashTableWorkflow.hpp"
 
 namespace dragenos {
 namespace workflow {

@@ -27,23 +27,24 @@ namespace dragenos {
 namespace map {
 
 // debug variables
-const char* typeString[17] = {"EMPTY",
-                              "HIFREQ",
-                              "EXTEND",
-                              "REPAIR",  // obsolete
-                              "CHAIN_BEG_MASK",
-                              "CHAIN_BEG_LIST",
-                              "CHAIN_CON_MASK",
-                              "CHAIN_CON_LIST",
-                              "INTERVAL_SL",
-                              "INTERVAL_SLE",
-                              "INTERVAL_S",
-                              "INTERVAL_L",
-                              "",
-                              "",
-                              "",
-                              "",
-                              "HIT"};
+const char* typeString[17] = {
+    "EMPTY",
+    "HIFREQ",
+    "EXTEND",
+    "REPAIR",  // obsolete
+    "CHAIN_BEG_MASK",
+    "CHAIN_BEG_LIST",
+    "CHAIN_CON_MASK",
+    "CHAIN_CON_LIST",
+    "INTERVAL_SL",
+    "INTERVAL_SLE",
+    "INTERVAL_S",
+    "INTERVAL_L",
+    "",
+    "",
+    "",
+    "",
+    "HIT"};
 // end of debug variables
 #ifdef TRACE_SEED_CHAINS
 static uint32_t seedOffset = 0;

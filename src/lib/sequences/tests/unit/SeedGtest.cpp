@@ -1,11 +1,9 @@
-#include "SeedMocks.hpp"
-
-#include "gtest/gtest.h"
-
 #include <sstream>
 #include <string>
 
+#include "SeedMocks.hpp"
 #include "common/Exceptions.hpp"
+#include "gtest/gtest.h"
 #include "sequences/Seed.hpp"
 
 namespace dragenos {
@@ -135,7 +133,8 @@ TEST(SeedTest, getPrimaryData)
   ASSERT_EQ(151u, read.getLength());
   for (unsigned i = 0; read.getLength() > i; ++i) {
     ASSERT_EQ((unsigned long)read.getBase2bpb(i), Seed(&read, i, 1).getPrimaryData(false)) << "i: " << i;
-    ASSERT_EQ((unsigned long)(~read.getBase2bpb(i)) & 3, Seed(&read, i, 1).getPrimaryData(true)) << "i: " << i;
+    ASSERT_EQ((unsigned long)(~read.getBase2bpb(i)) & 3, Seed(&read, i, 1).getPrimaryData(true))
+        << "i: " << i;
   }
   ASSERT_THROW(
       Seed(&read, read.getLength(), 1).getPrimaryData(false), dragenos::common::PreConditionException);

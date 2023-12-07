@@ -16,11 +16,10 @@
 #define COMMON_DEBUG_HPP
 
 #include <atomic>
+#include <boost/algorithm/string.hpp>
 #include <iostream>
 #include <memory>
 #include <typeinfo>
-
-#include <boost/algorithm/string.hpp>
 //#include <boost/date_time.hpp>
 #include <boost/io/ios_state.hpp>
 #include <boost/thread.hpp>

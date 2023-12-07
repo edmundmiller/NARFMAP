@@ -15,12 +15,11 @@
 #ifndef ALIGN_CIGAR_HPP
 #define ALIGN_CIGAR_HPP
 
-#include <sstream>
-#include <vector>
-
 #include <boost/assert.hpp>
 #include <boost/format.hpp>
 #include <boost/range/iterator_range.hpp>
+#include <sstream>
+#include <vector>
 
 #include "common/Debug.hpp"
 

@@ -13,6 +13,7 @@
  **/
 
 #include "bam/Tokenizer.hpp"
+
 #include "common/Debug.hpp"
 
 namespace dragenos {

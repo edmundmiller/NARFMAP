@@ -16,8 +16,10 @@
 #define ALIGN_ALIGNMENT_RESCUE_HPP
 
 #include <emmintrin.h>
+
 #include <array>
 #include <deque>
+
 #include "align/Alignment.hpp"
 #include "align/InsertSizeParameters.hpp"
 #include "map/ChainBuilder.hpp"
@@ -207,12 +209,10 @@ public:
    **/
   bool isReversedRescue(const SeedChain& anchoredChain) const
   {
-    return (pe_orientation_ == pe_orient_fr_c)
-               ? (!anchoredChain.isReverseComplement())
-               : (pe_orientation_ == pe_orient_rf_c)
-                     ? (!anchoredChain.isReverseComplement())
-                     : (pe_orientation_ == pe_orient_ff_c) ? (false)
-                                                           : /* (pe_orientation_==pe_orient_rr_c) ? */ (true);
+    return (pe_orientation_ == pe_orient_fr_c)   ? (!anchoredChain.isReverseComplement())
+           : (pe_orientation_ == pe_orient_rf_c) ? (!anchoredChain.isReverseComplement())
+           : (pe_orientation_ == pe_orient_ff_c) ? (false)
+                                                 : /* (pe_orientation_==pe_orient_rr_c) ? */ (true);
   }
 
 #if 0

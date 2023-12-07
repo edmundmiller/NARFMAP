@@ -13,6 +13,7 @@
  **/
 
 #include "common/Debug.hpp"
+
 #include "common/SystemCompatibility.hpp"
 
 namespace dragenos {

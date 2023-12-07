@@ -12,16 +12,17 @@
  **
  **/
 
+#include "reference/ReferenceDir.hpp"
+
 #include <fcntl.h>
 #include <sys/mman.h>
+
+#include <boost/format.hpp>
 #include <fstream>
 #include <iostream>
 #include <thread>
 
-#include <boost/format.hpp>
-
 #include "common/hash_generation/hash_table_compress.h"
-#include "reference/ReferenceDir.hpp"
 
 namespace dragenos {
 namespace reference {
@@ -52,7 +53,7 @@ typename ReferenceDir7::UcharPtr ReferenceDir7::ReadFileIntoBuffer(
   size = file.tellg();
   file.seekg(0, file.beg);
 
-  UcharPtr bufPtr(new uint8_t[size], [](uint8_t* p) -> void { delete [](p); });
+  UcharPtr bufPtr(new uint8_t[size], [](uint8_t* p) -> void { delete[](p); });
   file.read(reinterpret_cast<char*>(bufPtr.get()), size);
   if (!file) {
     //    THROW(DragenException, "Could not load reference - could not read ", path);
@@ -118,8 +119,7 @@ ReferenceDir7::ReferenceDir7(const boost::filesystem::path& path, bool mmap, boo
     // restore stdout
     dup2(stdoutori, 1);
 
-    hashtableData_ =
-        Uint64Ptr(reinterpret_cast<uint64_t*>(hashbuf), [](uint64_t* p) -> void { free(p); });
+    hashtableData_ = Uint64Ptr(reinterpret_cast<uint64_t*>(hashbuf), [](uint64_t* p) -> void { free(p); });
     extendTableData_ =
         Uint64Ptr(reinterpret_cast<uint64_t*>(extendTableBuf), [](uint64_t* p) -> void { free(p); });
   }

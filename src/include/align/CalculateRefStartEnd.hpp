@@ -16,6 +16,7 @@
 #define ALIGN_CALCULATE_REF_START_END_HPP
 
 #include <utility>
+
 #include "map/SeedChain.hpp"
 #include "sequences/Read.hpp"
 

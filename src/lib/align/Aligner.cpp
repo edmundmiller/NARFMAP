@@ -12,22 +12,23 @@
  **
  **/
 
+#include "align/Aligner.hpp"
+
+#include <fcntl.h>
+#include <sys/mman.h>
+
 #include <cassert>
 #include <cerrno>
 #include <cstring>
 #include <queue>
 
-#include <fcntl.h>
-#include <sys/mman.h>
-#include "common/DragenLogger.hpp"
-#include "common/Exceptions.hpp"
-
-#include "align/Aligner.hpp"
 #include "align/CalculateRefStartEnd.hpp"
 #include "align/Mapq.hpp"
 #include "align/PairBuilder.hpp"
 #include "align/Pairs.hpp"
 #include "align/Tlen.hpp"
+#include "common/DragenLogger.hpp"
+#include "common/Exceptions.hpp"
 #include "sequences/Seed.hpp"
 
 namespace dragenos {

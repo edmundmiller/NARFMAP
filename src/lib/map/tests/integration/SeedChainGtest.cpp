@@ -1,7 +1,6 @@
-#include "gtest/gtest.h"
-
 #include <limits>
 
+#include "gtest/gtest.h"
 #include "map/SeedChain.hpp"
 
 using dragenos::map::SeedChain;

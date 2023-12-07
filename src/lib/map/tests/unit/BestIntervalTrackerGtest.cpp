@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
-
 #include "SeedPositionMocks.hpp"
+#include "gtest/gtest.h"
 #include "map/BestIntervalTracker.hpp"
 
 using dragenos::map::BestIntervalTracker;

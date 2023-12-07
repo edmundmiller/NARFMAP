@@ -12,10 +12,9 @@
  **
  **/
 
+#include <boost/iostreams/stream_buffer.hpp>
 #include <istream>
 #include <vector>
-
-#include <boost/iostreams/stream_buffer.hpp>
 
 namespace dragenos {
 namespace fastq {

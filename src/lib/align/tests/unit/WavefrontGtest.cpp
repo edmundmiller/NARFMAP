@@ -1,8 +1,7 @@
-#include "gtest/gtest.h"
-
 #include <algorithm>
 
 #include "align/Wavefront.hpp"
+#include "gtest/gtest.h"
 
 TEST(Wavefront, Constructor)
 {
@@ -297,21 +296,22 @@ TEST(Wavefront, moveRight)
   constexpr short            MISMATCH  = -3;
   constexpr short            gapInit   = 5;
   constexpr short            gapExtend = 3;
-  const Antidiagonal         similarities{MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH};
+  const Antidiagonal         similarities{
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH};
   // E is unshifted
   const Antidiagonal ae{
       gapExtend - 1, gapExtend + 1, gapExtend + 2, gapExtend + 3, gapExtend + 4, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -354,21 +354,22 @@ TEST(Wavefront, moveDown)
   constexpr short            MISMATCH  = -3;
   constexpr short            gapInit   = 5;
   constexpr short            gapExtend = 3;
-  const Antidiagonal         similarities{MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH,
-                                  MISMATCH};
+  const Antidiagonal         similarities{
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH,
+      MISMATCH};
   // E is shifted by one yo the right (nextE[i] = lastE[i-1])
   const Antidiagonal ae{
       gapExtend - 1, gapExtend + 1, gapExtend + 2, gapExtend + 3, gapExtend + 4, 0, 0, 0, 0, 0, 0, 0, 0, 0};

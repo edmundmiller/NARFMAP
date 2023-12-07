@@ -78,7 +78,7 @@ private:
   Lock& l;
 
 public:
-  unlock_guard(unlock_guard&) = delete;
+  unlock_guard(unlock_guard&)            = delete;
   unlock_guard& operator=(unlock_guard&) = delete;
   explicit unlock_guard(Lock& m_) : l(m_) { l.unlock(); }
 

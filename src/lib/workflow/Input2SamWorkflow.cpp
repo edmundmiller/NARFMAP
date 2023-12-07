@@ -12,21 +12,21 @@
  **
  **/
 
+#include "workflow/Input2SamWorkflow.hpp"
+
+#include <boost/filesystem.hpp>
+#include <boost/iostreams/device/back_inserter.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
 #include <cerrno>
 #include <cstring>
 #include <fstream>
 #include <limits>
 
-#include "boost/iostreams/filter/gzip.hpp"
-
-#include <boost/filesystem.hpp>
-#include <boost/iostreams/device/back_inserter.hpp>
-#include <boost/iostreams/filtering_stream.hpp>
-
 #include "align/Aligner.hpp"
 #include "align/SinglePicker.hpp"
 #include "bam/BamBlockReader.hpp"
 #include "bam/Tokenizer.hpp"
+#include "boost/iostreams/filter/gzip.hpp"
 #include "common/Debug.hpp"
 #include "common/Threads.hpp"
 #include "fastq/FastqBlockReader.hpp"
@@ -37,10 +37,7 @@
 #include "options/DragenOsOptions.hpp"
 #include "reference/ReferenceDir.hpp"
 #include "sam/SamGenerator.hpp"
-
 #include "workflow/DualFastq2SamWorkflow.hpp"
-#include "workflow/Input2SamWorkflow.hpp"
-
 #include "workflow/alignment/AlignmentUtils.hpp"
 
 namespace dragenos {

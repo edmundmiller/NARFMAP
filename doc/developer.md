@@ -1,14 +1,13 @@
-
 # Directory structure
 
 ## Top level
 
 Only the strict minimum:
 
-* README.md
-* LICENSE and COPYRIGHT
-* Makefile
-* config.mk
+- README.md
+- LICENSE and COPYRIGHT
+- Makefile
+- config.mk
 
 ## make subdirectory
 
@@ -18,9 +17,9 @@ All the included makefiles for the build system
 
 All aspects of the documentation:
 
-* usage
-* developer
-* method
+- usage
+- developer
+- method
 
 ## make subdirectory
 
@@ -47,9 +46,10 @@ See "src/include/common/Exceptions.hh" and "src/lib/common/Exceptions.cpp" for e
 
 Style preference: currently there is a mixture of many difference styles but
 the preference should be towards camelCase vesus underscore_separated with:
-* UpperCamelCase for Classes
-* lowerCamelCase for methods, functions, parameter names and local variables
-* m_UpperCameLCase for class members
+
+- UpperCamelCase for Classes
+- lowerCamelCase for methods, functions, parameter names and local variables
+- m_UpperCameLCase for class members
 
 # Build system
 
@@ -63,11 +63,11 @@ tests and "install.mk" just once.
 
 The lists of programs, libraries, compilation units (CU) and integration tests are discovered with glob expressions:
 
-* programs: "*.cpp"
-* libraries: "src/lib/*/*.cpp" then using the unique paths. The first wiltcard is used for the library name. The
+- programs: "\*.cpp"
+- libraries: "src/lib/_/_.cpp" then using the unique paths. The first wiltcard is used for the library name. The
   second wildcard is used for the list of compilation units for each library.
-* unit tests: "src/lib/$(library)/tests/*Fixture.cpp"
-* integration tests: "tests/integration/*.cpp"
+- unit tests: "src/lib/$(library)/tests/\*Fixture.cpp"
+- integration tests: "tests/integration/\*.cpp"
 
 The build output is either the subdirectory "build/release" or "build/debug", depending on the build type.
 
@@ -79,7 +79,7 @@ the dependencies - when the list of goals explicitly contains only generis targe
 ## Programs
 
 Compilation with DEPFLAGS, CPPFLAGS and CXXFLAGS. Linking with CPPFLAGS, CXXFLAGS and LDFLAGS. There is a dummy
-empty target for the dependency file for each program.  There is an include of the corresponding dependency file
+empty target for the dependency file for each program. There is an include of the corresponding dependency file
 for each program.
 
 DEPFLAGS are just the usual macro "-MT $@ -MMD -MP -MF $(@:%.o=%.Td)" to generate the dependencies. Note that
@@ -89,7 +89,7 @@ generation of the dependencies.
 
 CPPFLAGS specify c++11, all warnings, add boost as additional system include path, optimization and debug level.
 
-CXXFLAGS controls the outpu of the compiler depending on the build type. In debug mode, it would only adding the 
+CXXFLAGS controls the outpu of the compiler depending on the build type. In debug mode, it would only adding the
 sanitize (address, leak and undefined), coverage and profiling information. In release mode, it would be all the
 meaningful optimizations.
 
@@ -108,7 +108,7 @@ Each library include "make/gtest.mk" for the optional unit tests associated to e
 
 ## Unit tests
 
-The unit tests are built and run in isolation for each CU. The main program to execute the unit tests is 
+The unit tests are built and run in isolation for each CU. The main program to execute the unit tests is
 the default provided in libgteest_main.
 
 The unit tests are for each CU - they are optional though. For a CU CompilationUnit, three files are expected:
@@ -119,18 +119,17 @@ generate a wrapper "CompilationUnitWrapper.cpp":
     #include "CompilationUnit.cpp"
 
 Both "CompilationUnitFixture.cpp" and "CompilationUnitWrapper.cpp" are compiled and then linked to "testRunner.o"
-to create "testCompilationUnit" which is then executed to create "passedCompilationUnit" which is then added to 
+to create "testCompilationUnit" which is then executed to create "passedCompilationUnit" which is then added to
 the list of dependencies for the library.
 
 # Testing
 
 ## Integration tests
 
-Each integration test is compiled and linked as the programs are. 
+Each integration test is compiled and linked as the programs are.
 
 TODO: add support for the automation of the execution of these tests.
 
 ## Acceptance tests
 
 Not supported
-

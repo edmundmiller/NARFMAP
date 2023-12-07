@@ -13,10 +13,9 @@
  **/
 #pragma once
 
+#include <boost/iostreams/operations.hpp>
 #include <istream>
 #include <vector>
-
-#include <boost/iostreams/operations.hpp>
 
 #include "common/Debug.hpp"
 

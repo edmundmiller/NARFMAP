@@ -13,11 +13,12 @@
  **/
 
 #include "align/SmithWaterman.hpp"
-#include "common/DragenLogger.hpp"
 
 #include <bitset>
 #include <cassert>
 #include <numeric>
+
+#include "common/DragenLogger.hpp"
 
 namespace dragenos {
 namespace align {

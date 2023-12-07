@@ -1,8 +1,7 @@
-#include "gtest/gtest.h"
-
 #include <algorithm>
 
 #include "align/Aligner.hpp"
+#include "gtest/gtest.h"
 #include "io/Fastq2ReadTransformer.hpp"
 
 const std::string THREE_RECORDS(

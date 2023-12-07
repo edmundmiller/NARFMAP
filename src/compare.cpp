@@ -1,4 +1,8 @@
 #include <array>
+#include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/functional/hash.hpp>
+#include <boost/program_options.hpp>
 #include <cctype>
 #include <cerrno>
 #include <cstring>
@@ -11,11 +15,6 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
-
-#include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/functional/hash.hpp>
-#include <boost/program_options.hpp>
 
 class Sam {
 public:

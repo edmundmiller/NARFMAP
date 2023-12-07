@@ -15,13 +15,12 @@
 #ifndef ALIGN_VECTOR_SMITH_WATERMAN_HPP
 #define ALIGN_VECTOR_SMITH_WATERMAN_HPP
 
-#include "align/SimilarityScores.hpp"
-#include "common/DragenLogger.hpp"
-#include "ssw/ssw.hpp"
-
 #include "align/Alignment.hpp"
 #include "align/Database.hpp"
 #include "align/Query.hpp"
+#include "align/SimilarityScores.hpp"
+#include "common/DragenLogger.hpp"
+#include "ssw/ssw.hpp"
 
 namespace dragenos {
 namespace align {
@@ -67,7 +66,10 @@ public:
 #endif
   }
 
-  ~VectorSmithWaterman() { free(sswScoringMat_); }
+  ~VectorSmithWaterman()
+  {
+    free(sswScoringMat_);
+  }
 
   uint16_t align(
       const unsigned char* queryBegin,

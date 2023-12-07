@@ -16,7 +16,6 @@
 #define ALIGN_INSERT_SIZE_DISTRIBUTION_HPP
 
 #include "align/InsertSizeParameters.hpp"
-
 #include "host/dragen_api/sampling/readgroup_insert_stats.hpp"
 
 namespace dragenos {

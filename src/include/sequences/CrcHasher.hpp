@@ -15,11 +15,11 @@
 #ifndef SEQUENCES_CRC_HASHER_HPP
 #define SEQUENCES_CRC_HASHER_HPP
 
+#include <inttypes.h>
+
 #include <fstream>
 #include <iostream>
 #include <memory>
-
-#include <inttypes.h>
 
 #include "CrcPolynomial.hpp"
 

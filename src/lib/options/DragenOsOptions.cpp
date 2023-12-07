@@ -12,13 +12,9 @@
  **
  **/
 
-#include <algorithm>
-#include <fstream>
-#include <ostream>
-#include <string>
-#include <typeinfo>
-#include <vector>
+#include "options/DragenOsOptions.hpp"
 
+#include <algorithm>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/regex.hpp>
 #include <boost/assign.hpp>
@@ -27,10 +23,14 @@
 #include <boost/lambda/bind.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/thread.hpp>
+#include <fstream>
+#include <ostream>
+#include <string>
+#include <typeinfo>
+#include <vector>
 
 #include "common/Exceptions.hpp"
 #include "common/Version.hpp"
-#include "options/DragenOsOptions.hpp"
 
 namespace dragenos {
 namespace options {

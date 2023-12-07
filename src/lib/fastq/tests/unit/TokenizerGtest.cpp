@@ -1,10 +1,9 @@
-#include "gtest/gtest.h"
-
 #include <algorithm>
 #include <string>
 #include <type_traits>
 
 #include "fastq/Tokenizer.hpp"
+#include "gtest/gtest.h"
 
 const std::string ONE_RECORD(
     "@NB551322:14:HFVLLBGX9:4:11401:24054:1050 2:N:0:CGGCTATG+CCGTCGCC\n"

@@ -13,8 +13,10 @@
  **/
 
 #include "align/VectorSmithWaterman.hpp"
+
 #include <sstream>
 #include <vector>
+
 #include "ssw/ssw.hpp"
 
 namespace dragenos {

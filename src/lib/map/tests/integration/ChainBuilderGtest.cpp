@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-
 #include "map/ChainBuilder.hpp"
 
 TEST(ChainBuilder, Constructor)

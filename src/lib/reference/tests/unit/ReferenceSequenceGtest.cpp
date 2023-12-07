@@ -1,8 +1,7 @@
-#include "gtest/gtest.h"
-
 #include <algorithm>
 #include <cassert>
 
+#include "gtest/gtest.h"
 #include "reference/ReferenceSequence.hpp"
 
 static std::string bases = "ACGTAACCGGTTAAACCCGGGTTT";

@@ -12,12 +12,13 @@
  **
  **/
 
+#include "sequences/CrcHasher.hpp"
+
 #include <memory.h>
 #include <stdlib.h>
+
 #include <iomanip>
 #include <iostream>
-
-#include "sequences/CrcHasher.hpp"
 
 namespace dragenos {
 namespace sequences {

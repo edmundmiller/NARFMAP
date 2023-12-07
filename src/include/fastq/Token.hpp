@@ -120,8 +120,10 @@ private:
   {
     return os << "BasicToken(" << std::string(token.headerBegin_, token.headerEnd_) << " "
               << std::string(token.baseCallsBegin_, token.baseCallsEnd_) << " "
-              << std::string(token.qScoresBegin_, token.end_)
-              << "):" << (token.empty() ? "empty" : token.valid() ? "valid" : "invalid");
+              << std::string(token.qScoresBegin_, token.end_) << "):"
+              << (token.empty()   ? "empty"
+                  : token.valid() ? "valid"
+                                  : "invalid");
   }
 };
 

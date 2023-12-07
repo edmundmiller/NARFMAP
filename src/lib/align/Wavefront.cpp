@@ -13,6 +13,7 @@
  **/
 
 #include "align/Wavefront.hpp"
+
 #include <assert.h>
 
 namespace dragenos {

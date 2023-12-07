@@ -13,6 +13,7 @@
  **/
 
 #include "fastq/Tokenizer.hpp"
+
 #include "common/Debug.hpp"
 
 namespace dragenos {

@@ -193,11 +193,10 @@ public:
 
   int64_t getUnclippedAlignmentCoordinate() const
   {
-    const int64_t offset = isUnmapped()
-                               ? 0
-                               : (isReverseComplement()) ? (getCigar().getReferenceLengthPlusEndClips() - 1)
-                                                         : -int64_t(getCigar().countStartClips());
-    int64_t result = static_cast<int64_t>(getPosition()) + offset;
+    const int64_t offset = isUnmapped()              ? 0
+                           : (isReverseComplement()) ? (getCigar().getReferenceLengthPlusEndClips() - 1)
+                                                     : -int64_t(getCigar().countStartClips());
+    int64_t       result = static_cast<int64_t>(getPosition()) + offset;
     return result;
   }
 

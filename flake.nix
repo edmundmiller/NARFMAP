@@ -25,10 +25,7 @@
 
       perSystem = {
         config,
-        self',
-        inputs',
         pkgs,
-        system,
         ...
       }: {
         # Per-system attributes can be defined here. The self' and inputs'

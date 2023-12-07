@@ -16,10 +16,10 @@
 #define ALIGN_PAIR_BUILDER_HPP
 
 #include <sys/mman.h>
-#include <functional>
-#include <vector>
 
 #include <boost/filesystem.hpp>
+#include <functional>
+#include <vector>
 
 #include "align/AlignmentGenerator.hpp"
 #include "align/Alignments.hpp"

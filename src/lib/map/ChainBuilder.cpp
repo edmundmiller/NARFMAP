@@ -12,10 +12,11 @@
  **
  **/
 
+#include "map/ChainBuilder.hpp"
+
 #include <assert.h>
 
 #include "common/DragenLogger.hpp"
-#include "map/ChainBuilder.hpp"
 
 namespace dragenos {
 namespace map {

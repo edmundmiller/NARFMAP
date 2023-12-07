@@ -16,6 +16,7 @@
 #define ALIGN_INSERT_SIZE_PARAMETERS_HPP
 
 #include <math.h>
+
 #include <algorithm>
 #include <cstdint>
 #include <iostream>

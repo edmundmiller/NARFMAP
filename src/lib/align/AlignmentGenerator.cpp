@@ -13,6 +13,7 @@
  **/
 
 #include "align/AlignmentGenerator.hpp"
+
 #include "align/CalculateRefStartEnd.hpp"
 #include "common/DragenLogger.hpp"
 

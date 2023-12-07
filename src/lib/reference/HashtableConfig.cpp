@@ -13,6 +13,7 @@
  **/
 
 #include "reference/HashtableConfig.hpp"
+
 #include <algorithm>
 #include <boost/format.hpp>
 #include <numeric>

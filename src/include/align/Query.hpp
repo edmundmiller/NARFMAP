@@ -45,12 +45,12 @@ public:
   //Query(Args ... args) : std::vector<char>(std::forward<Args>(args)...), beginOffset_(0) {}
   Query& operator=(const Bases bases)
   {
-    beginOffset_   = 0;
+    beginOffset_ = 0;
     Bases::operator=(bases);
     return *this;
   }
   void setBeginOffset(const size_t offset) { beginOffset_ = offset; }
-//  void incrementBeginOffset(const size_t offset) { ++beginOffset_; }
+  //  void incrementBeginOffset(const size_t offset) { ++beginOffset_; }
   // reimplement the begin method to support an offset
   //auto begin() const -> decltype(begin()) {return begin() + beginOffset_;}
 private:

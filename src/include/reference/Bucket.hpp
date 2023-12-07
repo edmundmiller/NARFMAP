@@ -16,6 +16,7 @@
 #define REFERENCE_BUCKET_HPP
 
 #include <array>
+
 #include "reference/HashRecord.hpp"
 #include "reference/HashtableTraits.hpp"
 

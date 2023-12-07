@@ -12,11 +12,13 @@
  **
  **/
 
+#include "align/AlignmentRescue.hpp"
+
 #include <emmintrin.h>
+
 #include <boost/assert.hpp>
 #include <iomanip>
 
-#include "align/AlignmentRescue.hpp"
 #include "common/DragenLogger.hpp"
 #include "map/SeedPosition.hpp"
 

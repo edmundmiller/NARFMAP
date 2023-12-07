@@ -13,6 +13,7 @@
  **/
 
 #include "align/PairBuilder.hpp"
+
 #include "align/AlignmentRescue.hpp"
 #include "align/SinglePicker.hpp"
 #include "align/Tlen.hpp"
@@ -348,9 +349,9 @@ void PairBuilder::updateEndMapq(
     const bool mapq0 = (aln_cfg_sample_mapq0_ >= 1 && best->hasOnlyRandomSamples()) ||
                        (aln_cfg_sample_mapq0_ >= 2 && best->isExtra());
     const MapqType mapq = mapq0 ? 0
-                                : (INVALID_SCORE != xs_score_diff)
-                                      ? std::min(std::max(0, xs_heur_mapq), mapq_prod_pen)
-                                      : mapq_prod_pen;
+                          : (INVALID_SCORE != xs_score_diff)
+                              ? std::min(std::max(0, xs_heur_mapq), mapq_prod_pen)
+                              : mapq_prod_pen;
 
 #ifdef TRACE_SCORING
     std::cerr << "[SCORING]\t"

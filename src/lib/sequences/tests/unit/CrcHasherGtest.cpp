@@ -1,7 +1,7 @@
+#include <string>
+
 #include "CrcHasherMocks.hpp"
 #include "gtest/gtest.h"
-
-#include <string>
 #include "sequences/CrcHasher.hpp"
 
 TEST(CrcHasher, KnownHashValues)

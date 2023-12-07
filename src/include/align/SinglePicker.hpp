@@ -16,10 +16,10 @@
 #define ALIGN_SINGLE_PICKER_HPP
 
 #include <sys/mman.h>
-#include <functional>
-#include <vector>
 
 #include <boost/filesystem.hpp>
+#include <functional>
+#include <vector>
 
 #include "align/Alignments.hpp"
 #include "align/InsertSizeParameters.hpp"

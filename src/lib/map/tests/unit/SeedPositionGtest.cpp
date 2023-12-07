@@ -1,7 +1,5 @@
-#include "gtest/gtest.h"
-
 #include "SeedPositionMocks.hpp"
-
+#include "gtest/gtest.h"
 #include "map/SeedPosition.hpp"
 
 using dragenos::map::SeedPosition;
