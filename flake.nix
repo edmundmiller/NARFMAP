@@ -34,14 +34,15 @@
             {
               # https://devenv.sh/reference/options/
               packages = [
-                (pkgs.boost.override
-                  {
-                    enableShared = false;
-                    enabledStatic = true;
-                  })
+                pkgs.boost
                 pkgs.gtest
               ];
               languages.cplusplus.enable = true;
+
+              enterShell = ''
+                export BOOST_INCLUDEDIR="${pkgs.boost}/include"
+                export BOOST_LIBRARYDIR="${pkgs.boost}/lib"
+              '';
             }
           ];
         };
