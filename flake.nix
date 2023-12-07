@@ -33,11 +33,8 @@
           modules = [
             {
               # https://devenv.sh/reference/options/
-              packages = [pkgs.hello];
-
-              enterShell = ''
-                hello
-              '';
+              packages = [pkgs.boost pkgs.gtest];
+              languages.cplusplus.enable = true;
             }
           ];
         };
