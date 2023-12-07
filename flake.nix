@@ -49,6 +49,7 @@
           packages = [
             pkgs.boost
             pkgs.gtest
+            pkgs.zlib
           ];
           languages.cplusplus.enable = true;
           env = {
