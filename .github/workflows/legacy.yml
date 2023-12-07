@@ -1,29 +1,30 @@
 name: C/C++ CI
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - main
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Install dependancies
-      run: sudo apt-get install -y libboost-all-dev libgtest-dev
-    - name: make (compile and launch unit tests)
-      run: make
-    - name: make install
-      run: sudo make install
-    - uses: actions/upload-artifact@v3
-      with:
-        name: compare
-        path: ./build/release/compare
-    - uses: actions/upload-artifact@v3
-      with:
-        name: dragen-os
-        path: ./build/release/dragen-os
+      - uses: actions/checkout@v3
+      - name: Install dependancies
+        run: sudo apt-get install -y libboost-all-dev libgtest-dev
+      - name: make (compile and launch unit tests)
+        run: make
+      - name: make install
+        run: sudo make install
+      - uses: actions/upload-artifact@v3
+        with:
+          name: compare
+          path: ./build/release/compare
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dragen-os
+          path: ./build/release/dragen-os
