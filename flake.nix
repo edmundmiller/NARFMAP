@@ -40,8 +40,8 @@
               languages.cplusplus.enable = true;
 
               enterShell = ''
-                export BOOST_INCLUDEDIR="${pkgs.boost}/include"
-                export BOOST_LIBRARYDIR="${pkgs.boost}/lib"
+                export BOOST_INCLUDEDIR="${pkgs.lib.getDev pkgs.boost}/include"
+                export BOOST_LIBRARYDIR="${pkgs.lib.getLib pkgs.boost}/lib"
               '';
             }
           ];
