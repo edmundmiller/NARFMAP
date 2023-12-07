@@ -13,9 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install dependencies
+    - name: Install dependancies
       run: sudo apt-get install -y libboost-all-dev libgtest-dev
     - name: make (compile and launch unit tests)
       run: make
     - name: make install
-      run: make install
+      run: sudo make install
