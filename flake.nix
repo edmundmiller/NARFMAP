@@ -41,6 +41,12 @@
             pkgs.zlib
           ];
 
+          installPhase = ''
+            mkdir -p $out/bin
+            cp build/release/compare $out/bin
+            cp build/release/dragen-os $out/bin
+          '';
+
           env = {
             BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
             BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
