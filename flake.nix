@@ -42,6 +42,8 @@
               enterShell = ''
                 export BOOST_INCLUDEDIR="${pkgs.lib.getDev pkgs.boost}/include"
                 export BOOST_LIBRARYDIR="${pkgs.lib.getLib pkgs.boost}/lib"
+                export GTEST_INCLUDEDIR="${pkgs.lib.getDev pkgs.gtest}/include"
+                export GTEST_LIBRARYDIR="${pkgs.lib.getLib pkgs.gtest}/lib"
               '';
             }
           ];
