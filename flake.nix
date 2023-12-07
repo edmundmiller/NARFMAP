@@ -28,12 +28,39 @@
         pkgs,
         ...
       }: {
-        # Per-system attributes can be defined here. The self' and inputs'
-        # module parameters provide easy access to attributes of the same
-        # system.
+        packages.default = pkgs.llvmPackages.stdenv.mkDerivation rec {
+          pname = "NARFMAP";
+          version = "1.3.1";
 
-        # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
-        packages.default = pkgs.hello;
+          src = ./.;
+
+          buildInputs = [
+            pkgs.boost
+            pkgs.llvmPackages.clang
+            pkgs.gnumake
+            pkgs.gtest
+            pkgs.zlib
+          ];
+
+          env = {
+            BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
+            BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
+            GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
+            GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
+            GTEST_ROOT = "${pkgs.gtest}";
+            LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
+          };
+
+          meta = with pkgs.lib; {
+            homepage = "https://github.com/nixvital/nix-based-cpp-starterkit";
+            description = ''
+              A template for Nix based C++ project setup.";
+            '';
+            licencse = licenses.mit;
+            platforms = with platforms; linux ++ darwin;
+            maintainers = [maintainers.breakds];
+          };
+        };
 
         devenv.shells.default = {
           name = "NARFMAP";
