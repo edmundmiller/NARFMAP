@@ -17,6 +17,7 @@
 #include <vector>
 
 #include "bam/Bam.hpp"
+#include "boost/iostreams/filter/gzip.hpp"
 #include "common/Debug.hpp"
 #include "common/Exceptions.hpp"
 
