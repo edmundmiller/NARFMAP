@@ -7,6 +7,7 @@
     nix2container.url = "github:nlewo/nix2container";
     nix2container.inputs.nixpkgs.follows = "nixpkgs";
     mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   nixConfig = {
@@ -18,6 +19,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
+        inputs.treefmt-nix.flakeModule
       ];
       systems = ["x86_64-linux" "i686-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin"];
 
@@ -60,6 +62,19 @@
             GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
             GTEST_ROOT = "${pkgs.gtest}";
             LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
+          };
+        };
+
+        treefmt.config = {
+          projectRootFile = "flake.nix";
+
+          programs.alejandra.enable = true;
+          programs.clang-format.enable = true;
+          programs.deadnix.enable = true;
+          programs.prettier.enable = true;
+          programs.prettier.settings = {
+            editorconfig = true;
+            embeddedLanguageFormatting = "auto";
           };
         };
       };
