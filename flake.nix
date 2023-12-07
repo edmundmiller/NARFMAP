@@ -28,7 +28,7 @@
         pkgs,
         ...
       }: {
-        packages.default = pkgs.llvmPackages.stdenv.mkDerivation rec {
+        packages.default = pkgs.stdenv.mkDerivation rec {
           pname = "NARFMAP";
           version = "1.3.1";
 
@@ -42,8 +42,6 @@
           ];
 
           env = {
-            CC = "${pkgs.gcc}/bin/gcc";
-            CXX = "${pkgs.gcc}/bin/g++";
             BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
             BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
             GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
