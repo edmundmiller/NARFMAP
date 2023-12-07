@@ -36,13 +36,14 @@
 
           buildInputs = [
             pkgs.boost
-            pkgs.llvmPackages.clang
             pkgs.gnumake
             pkgs.gtest
             pkgs.zlib
           ];
 
           env = {
+            CC = "${pkgs.gcc}/bin/gcc";
+            CXX = "${pkgs.gcc}/bin/g++";
             BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
             BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
             GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
