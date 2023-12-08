@@ -38,7 +38,7 @@
       in {
         packages.default = pkgs.stdenv.mkDerivation rec {
           pname = "NARFMAP";
-          version = "1.3.1";
+          version = (builtins.fromTOML (builtins.readFile ./Cargo.toml)).package.version;
 
           src = ./.;
 
