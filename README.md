@@ -1,19 +1,30 @@
-# Dragmap
+# NARFMAP
 
-Dragmap is the Dragen mapper/aligner Open Source Software.
+NARFMAP is a fork of the Dragen mapper/aligner Open Source Software.
 
 ## Installation
 
 ### Using bioconda
 
-Dragmap is available in the [Bioconda](https://anaconda.org/bioconda/dragmap) package manager.If you choose to install with bioconda, please first follow the bioconda install procedure from here:
-https://bioconda.github.io/user/install.html
-
-Once you have bioconda installed, you should be able to install Dragmap with `conda install dragmap` (or `conda create -n myenv dragmap` to install in a new environment). This will install the `dragen-os` binary.
+Coming Soon™️
 
 ### Build from source
 
-#### Prerequisites
+#### Nix
+
+1. Install nix. The Determinate Systems Installer is recommended for Flakes.
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+2. Run `nix build`
+
+#### If you're feeling bold
+
+We're still using the previous build system under the hood
+
+##### Prerequisites
 
 Compilation was tested on CentOS 7
 
@@ -24,7 +35,7 @@ Compilation was tested on CentOS 7
 - Hardware: x86_86, 64GB RAM minimum
 - OS: Centos >= 7.7
 
-#### Install
+##### Install
 
 The basic procedure is
 
@@ -45,7 +56,7 @@ To compile with unit tests, if google test was installed in user space, it might
     export GTEST_ROOT=/home/username/lib/gtest
     export LD_LIBRARY_PATH=/home/username/lib/gtest/lib
 
-#### Other variables controlling the build process:
+##### Other variables controlling the build process:
 
 - GCC_BASE
 - CXX
@@ -53,34 +64,6 @@ To compile with unit tests, if google test was installed in user space, it might
 - BOOST_INCLUDEDIR
 - BOOST_LIBRARYDIR
 
-## Basic command line usage
-
-### Command line options
-
-    dragen-os --help
-
-### Build hash table of a reference fasta file
-
-    dragen-os --build-hash-table true --ht-reference reference.fasta  --output-directory /home/data/reference/
-
-### Build hash table using an alt-masked bed file
-
-    dragen-os --build-hash-table true --ht-reference hg38.fa  --output-directory /home/data/reference/ --output-file-prefix=dragmap.hg38_alt_masked --ht-mask-bed=fasta_mask/hg38_alt_mask.bed
-
-### Align paired-end reads :
-
-Output result to standard output
-
-    dragen-os -r /home/data/reference/ -1 reads_1.fastq.gz -2 reads_2.fastq.gz >  result.sam
-
-Or directly to a file :
-
-    dragen-os -r /home/data/reference/ -1 reads_1.fastq.gz -2 reads_2.fastq.gz --output-directory /home/data/  --output-file-prefix result
-
-### Align single-end reads :
-
-    dragen-os -r /home/data/reference/ -1 reads_1.fastq.gz  >  result.sam
-
 ## Pull requests
 
-We are not accepting pull requests into this repository at this time, in particular because of conflicts concerns with our internal repository. For any bug report / recommendation / feature request, please open an issue.
+We are accepting pull requests into this repository at this time! For any bug report / recommendation / feature request, please open an issue. Stay tuned for a `CONTRIBUTING.md`
