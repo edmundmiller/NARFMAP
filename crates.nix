@@ -8,7 +8,7 @@
     crateName = "my-crate";
   in {
     # declare projects
-    nci.projects."simple".path = ./.;
+    nci.projects.${crateName}.path = ./.;
     # configure crates
     nci.crates.${crateName} = {};
   };
