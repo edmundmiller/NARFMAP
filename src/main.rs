@@ -19,6 +19,13 @@ enum Commands {
         #[arg(short, long, value_name = "FILE")]
         fasta: Option<PathBuf>,
     },
+
+    Align {
+        #[arg(short, long, value_name = "FILE")]
+        fastq1: Option<PathBuf>,
+        #[arg(short, long, value_name = "FILE")]
+        fastq2: Option<PathBuf>,
+    },
 }
 
 fn main() {
@@ -36,7 +43,11 @@ fn main() {
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
     match &cli.command {
-        Some(Commands::BuildHashTable { fasta }) => {}
+        Some(Commands::BuildHashTable { fasta: _ }) => {}
+        Some(Commands::Align {
+            fastq1: _,
+            fastq2: _,
+        }) => {}
         None => {}
     }
 
