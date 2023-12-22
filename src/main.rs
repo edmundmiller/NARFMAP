@@ -15,11 +15,9 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// does testing things
-    Test {
-        /// lists test values
-        #[arg(short, long)]
-        list: bool,
+    BuildHashTable {
+        #[arg(short, long, value_name = "FILE")]
+        fasta: Option<PathBuf>,
     },
 }
 
@@ -38,13 +36,7 @@ fn main() {
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
     match &cli.command {
-        Some(Commands::Test { list }) => {
-            if *list {
-                println!("Printing testing lists...");
-            } else {
-                println!("Not printing testing lists...");
-            }
-        }
+        Some(Commands::BuildHashTable { fasta }) => {}
         None => {}
     }
 
