@@ -50,6 +50,10 @@
             pkgs.zlib
           ];
 
+          buildPhase = ''
+            make
+          '';
+
           installPhase = ''
             mkdir -p $out/bin
             cp build/release/compare $out/bin

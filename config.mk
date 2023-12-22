@@ -6,7 +6,7 @@ DRAGEN_OS_VERSION:=0.2020.08.19
 ##
 ############################################################
 
-SHELL:=/bin/bash
+SHELL:=bash
 UNAME_STRING:=$(shell uname -a)
 OS?=$(or \
     $(findstring el7,$(UNAME_STRING)),\
