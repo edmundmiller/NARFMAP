@@ -5,3 +5,7 @@ edition = "2018"
 
 [dependencies]
 clap = { version = "4.4.11", features = ["derive"] }
+
+[build-dependencies]
+bindgen = "0.69.1"
+
