@@ -1,18 +1,11 @@
-// build.rs
-extern crate bindgen;
-
-use std::env;
-use std::path::PathBuf;
-
-fn main() {
-    println!("cargo:rerun-if-changed=wrapper.h");
-    let bindings = bindgen::Builder::default()
-        .header("wrapper.h")
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
-        .generate()
-        .expect("Unable to generate bindings");
-    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-    bindings
-        .write_to_file(out_path.join("bindings.rs"))
-        .expect("Couldn't write bindings!");
+fn main() -> miette::Result<()> {
+    let path = std::path::PathBuf::from("src"); // include path
+    let mut b = autocxx_build::Builder::new("src/main.rs", &[&path]).build()?;
+    // This assumes all your C++ bindings are in main.rs
+    b.flag_if_supported("-std=c++17")
+        .file("src/dragen-os.cpp")
+        .compile("dragen-os"); // arbitrary library name, pick anything
+    println!("cargo:rerun-if-changed=src/main.rs");
+    // Add instructions to link to any C++ libraries you need.
+    Ok(())
 }

@@ -2,7 +2,12 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 
-include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+use autocxx::prelude::*; // use all the main autocxx functions
+
+include_cpp! {
+    safety!(unsafe) // see details of unsafety policies described in the 'safety' section of the book
+    generate!("main") // add this line for each function or type you wish to generate
+}
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
