@@ -2,6 +2,8 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
