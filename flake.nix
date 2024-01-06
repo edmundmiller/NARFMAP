@@ -94,6 +94,8 @@
           LIBCLANG_PATH = "${pkgs.llvmPackages.libclang}/lib";
           doCheck = false;
 
+          nativeBuildInputs = [pkgs.rustPlatform.bindgenHook];
+
           preBuild = with pkgs; ''
             # From: https://github.com/NixOS/nixpkgs/blob/1fab95f5190d087e66a3502481e34e15d62090aa/pkgs/applications/networking/browsers/firefox/common.nix#L247-L253
             # Set C flags for Rust's bindgen program. Unlike ordinary C
