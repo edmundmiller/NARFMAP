@@ -2,13 +2,13 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 
-use autocxx::prelude::*; // use all the main autocxx functions
+autocxx::include_cxx!("dragen-os", "src/main.rs");
 
 include_cpp! {
+    #include "include/workflow/GenHashTableWorkflow.hpp"
     safety!(unsafe) // see details of unsafety policies described in the 'safety' section of the book
-    generate!("main") // add this line for each function or type you wish to generate
+    generate!("buildHashTable") // add this line for each function or type you wish to generate
 }
-
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
