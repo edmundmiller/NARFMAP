@@ -88,10 +88,26 @@
 
           src = ./.;
 
+          buildInputs = [
+            pkgs.boost
+            pkgs.gnumake
+            pkgs.gtest
+            pkgs.zlib
+          ];
+
           # cargoSha256 = pkgs.lib.fakeSha256;
           cargoSha256 = "sha256-pXy6sM34EEys/IxyHpKmZBKe1EQkH9mA4pB55wOZ/vY=";
 
-          LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+          env = {
+            BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
+            BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
+            GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
+            GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
+            GTEST_ROOT = "${pkgs.gtest}";
+            LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
+            LIBCLANG_PATH = "${pkgs.lib.getLib pkgs.llvmPackages.libclang.lib}/lib";
+          };
+
           doCheck = false;
 
           meta = with pkgs.lib; {

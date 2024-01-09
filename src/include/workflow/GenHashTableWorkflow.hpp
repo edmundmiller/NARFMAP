@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "fastq/FastqNRecordReader.hpp"
+#include "../fastq/FastqNRecordReader.hpp"
 #include "options/DragenOsOptions.hpp"
 
 namespace dragenos {
