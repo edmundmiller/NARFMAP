@@ -3,7 +3,7 @@ fn main() -> miette::Result<()> {
 
     let path = std::path::PathBuf::from("src"); // include path
     let mut b = autocxx_build::Builder::new("src/main.rs", &[&path]).build()?;
-    b.flag_if_supported("-std=c++17")
+    b.std("c++17")
         .includes(include_dir)
         .file("src/dragen-os.cpp")
         .compile("dragen-os"); // arbitrary library name, pick anything
