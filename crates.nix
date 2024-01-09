@@ -4,8 +4,8 @@
     config,
     ...
   }: let
-    # TODO: change this to your crate's name
-    crateName = "my-crate";
+    cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
+    crateName = cargoToml.package.name;
   in {
     # declare projects
     nci.projects.${crateName}.path = ./.;

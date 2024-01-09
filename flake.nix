@@ -3,17 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    devenv.url = "github:cachix/devenv";
+    devshell.url = "github:numtide/devshell";
     nci.url = "github:yusdacra/nix-cargo-integration";
     nix2container.url = "github:nlewo/nix2container";
     nix2container.inputs.nixpkgs.follows = "nixpkgs";
     mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-  };
-
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
   };
 
   outputs = inputs @ {
@@ -23,7 +18,7 @@
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.devenv.flakeModule
+        inputs.devshell.flakeModule
         inputs.nci.flakeModule
         inputs.treefmt-nix.flakeModule
         ./crates.nix
@@ -118,18 +113,14 @@
           };
         };
 
-        devShells.narf = crateOutputs.devShell;
+        devshells.narf = crateOutputs.devShell;
 
-        devenv.shells.default = {
+        devshells.default = {
           name = "NARFMAP";
 
           imports = [
-            # This is just like the imports in devenv.nix.
-            # See https://devenv.sh/guides/using-with-flake-parts/#import-a-devenv-module
-            # ./devenv-foo.nix
           ];
 
-          # https://devenv.sh/reference/options/
           packages = [
             pkgs.boost
             pkgs.gnumake
