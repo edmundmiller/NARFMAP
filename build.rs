@@ -1,8 +1,10 @@
 fn main() -> miette::Result<()> {
+    let include_dir = Some(std::path::Path::new("src/include/"));
+
     let path = std::path::PathBuf::from("src"); // include path
     let mut b = autocxx_build::Builder::new("src/main.rs", &[&path]).build()?;
     b.flag_if_supported("-std=c++17")
-        .flag_if_supported("-I src/include")
+        .includes(include_dir)
         .file("src/dragen-os.cpp")
         .compile("dragen-os"); // arbitrary library name, pick anything
     println!("cargo:rerun-if-changed=src/main.rs");
