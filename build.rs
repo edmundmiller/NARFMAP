@@ -1,17 +1,18 @@
-use std::path::Path;
+use std::process::Command;
 
 fn main() -> miette::Result<()> {
-    let include_dir = Path::new("src/include/");
+    println!("cargo:rerun-if-changed=Makefile");
+    let status = Command::new("make")
+        .args(&["clean"])
+        .status()
+        .expect("failed to run \"make clean\"");
+    assert!(status.success());
 
-    let path = std::path::PathBuf::from("src"); // include path
-    let mut b = autocxx_build::Builder::new("src/main.rs", &[&path]).build()?;
-    b.std("c++17")
-        .cpp_set_stdlib("stdc++")
-        .include(include_dir)
-        .file("src/dragen-os.cpp")
-        .compile("dragen-os"); // arbitrary library name, pick anything
-    println!("cargo:rerun-if-changed=src/main.rs");
-    println!("cargo:rerun-if-changed=src/dragen-os.cpp");
+    // build dragen-os command and dragen static library
+    let status = Command::new("make")
+        .status()
+        .expect("failed to run \"make\"");
+    assert!(status.success());
     // Add instructions to link to any C++ libraries you need.
     Ok(())
 }
