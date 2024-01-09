@@ -32,7 +32,11 @@
         crateName = cargoToml.package.name;
         crateOutputs = config.nci.outputs.${crateName};
       in {
-        packages.default = pkgs.stdenv.mkDerivation {
+        packages.default = crateOutputs.packages.release;
+
+        devShells.default = crateOutputs.devShell;
+
+        packages.dragen = pkgs.stdenv.mkDerivation {
           pname = "NARFMAP";
           version = cargoToml.package.version;
 
@@ -76,12 +80,8 @@
           };
         };
 
-        packages.narf = crateOutputs.packages.release;
-
-        devShells.narf = crateOutputs.devShell;
-
         # FIXME
-        # devShells.default = {
+        # devShells.dragen = {
         #   name = "NARFMAP";
 
         #   imports = [
