@@ -10,6 +10,15 @@
     # declare projects
     nci.projects.${crateName}.path = ./.;
     # configure crates
-    nci.crates.${crateName} = {};
+    nci.crates.${crateName} = {
+      drvConfig.mkDerivation = {
+        buildInputs = [
+          pkgs.boost
+          pkgs.gnumake
+          pkgs.gtest
+          pkgs.zlib
+        ];
+      };
+    };
   };
 }

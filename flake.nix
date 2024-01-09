@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    devshell.url = "github:numtide/devshell";
     nci.url = "github:yusdacra/nix-cargo-integration";
     nix2container.url = "github:nlewo/nix2container";
     nix2container.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +17,6 @@
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.devshell.flakeModule
         inputs.nci.flakeModule
         inputs.treefmt-nix.flakeModule
         ./crates.nix
@@ -31,11 +29,12 @@
         ...
       }: let
         cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
-        crateOutputs = config.nci.outputs."my-crate";
+        crateName = cargoToml.package.name;
+        crateOutputs = config.nci.outputs.${crateName};
       in {
-        packages.default = pkgs.stdenv.mkDerivation rec {
+        packages.default = pkgs.stdenv.mkDerivation {
           pname = "NARFMAP";
-          version = (builtins.fromTOML (builtins.readFile ./Cargo.toml)).package.version;
+          version = cargoToml.package.version;
 
           src = ./.;
 
@@ -77,66 +76,32 @@
           };
         };
 
-        packages.narf = pkgs.rustPlatform.buildRustPackage rec {
-          pname = cargoToml.package.name;
-          version = cargoToml.package.version;
+        packages.narf = crateOutputs.packages.release;
 
-          src = ./.;
+        devShells.narf = crateOutputs.devShell;
 
-          buildInputs = [
-            pkgs.boost
-            pkgs.gnumake
-            pkgs.gtest
-            pkgs.zlib
-          ];
+        # FIXME
+        # devShells.default = {
+        #   name = "NARFMAP";
 
-          # cargoSha256 = pkgs.lib.fakeSha256;
-          cargoSha256 = "sha256-pXy6sM34EEys/IxyHpKmZBKe1EQkH9mA4pB55wOZ/vY=";
+        #   imports = [
+        #   ];
 
-          env = {
-            BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
-            BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
-            GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
-            GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
-            GTEST_ROOT = "${pkgs.gtest}";
-            LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
-            LIBCLANG_PATH = "${pkgs.lib.getLib pkgs.llvmPackages.libclang.lib}/lib";
-          };
-
-          doCheck = false;
-
-          meta = with pkgs.lib; {
-            # TODO description = cargoToml.package.description;
-            # TODO homepage = cargoToml.package.homepage;
-            license = with licenses; [mit];
-            maintainers = with maintainers; [edmundmiller];
-          };
-        };
-
-        devshells.narf = crateOutputs.devShell;
-
-        devshells.default = {
-          name = "NARFMAP";
-
-          imports = [
-          ];
-
-          packages = [
-            pkgs.boost
-            pkgs.gnumake
-            pkgs.gtest
-            pkgs.zlib
-          ];
-          languages.cplusplus.enable = true;
-          env = {
-            BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
-            BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
-            GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
-            GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
-            GTEST_ROOT = "${pkgs.gtest}";
-            LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
-          };
-        };
+        #   packages = [
+        #     pkgs.boost
+        #     pkgs.gnumake
+        #     pkgs.gtest
+        #     pkgs.zlib
+        #   ];
+        #   env = {
+        #     BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
+        #     BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
+        #     GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
+        #     GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
+        #     GTEST_ROOT = "${pkgs.gtest}";
+        #     LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
+        #   };
+        # };
 
         treefmt.config = {
           projectRootFile = "flake.nix";
