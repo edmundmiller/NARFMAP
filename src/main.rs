@@ -2,13 +2,18 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 
-autocxx::include_cxx!("dragen-os", "src/main.rs");
-
-include_cpp! {
-    #include "include/workflow/GenHashTableWorkflow.hpp"
-    safety!(unsafe) // see details of unsafety policies described in the 'safety' section of the book
-    generate!("buildHashTable") // add this line for each function or type you wish to generate
+extern "C" {
+    fn snappy_max_compressed_length(source_length: size_t) -> size_t;
 }
+
+#[cxx::bridge]
+pub(crate) mod ffi {
+    unsafe extern "C++" {
+        include!("include/workflow/GenHashTableWorkflow.hpp");
+        include!("include/workflow/Input2SamWorkflow.hpp");
+    }
+}
+
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {

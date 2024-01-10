@@ -13,6 +13,10 @@ fn main() -> miette::Result<()> {
         .status()
         .expect("failed to run \"make\"");
     assert!(status.success());
-    // Add instructions to link to any C++ libraries you need.
+
+    // Link libraries
+    println!("cargo:rustc-link-lib=static={}", "dragen");
+    println!("cargo:rustc-link-lib=static={}", "dragen-os");
+
     Ok(())
 }
