@@ -172,7 +172,7 @@ else # non DEBUG
 #CPPFLAGS += -O3 -march=skylake-avx512 # same as above
 
 # this seems to be fastest for fastq parsing. mainly because it manages to put proper PSUBB instruction for subtracing q0 from qscore chars
-CPPFLAGS += -g -O2 -ftree-vectorize -finline-functions -fpredictive-commoning -fgcse-after-reload -funswitch-loops -ftree-slp-vectorize -fvect-cost-model -fipa-cp-clone -ftree-phiprop
+CPPFLAGS += -g -O2 -ftree-vectorize -finline-functions -fgcse-after-reload -funswitch-loops -ftree-slp-vectorize -fvect-cost-model
 
 # this seems slightly slower than above
 #CXXFLAGS += -g -mavx2 -O2 -ftree-vectorize -finline-functions -fpredictive-commoning -fgcse-after-reload -funswitch-loops -ftree-slp-vectorize -fvect-cost-model -fipa-cp-clone -ftree-phiprop

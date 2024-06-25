@@ -32,10 +32,11 @@
           pkgs.gnumake
           pkgs.gtest
           pkgs.zlib
+          pkgs.zig
         ];
 
         buildPhase = ''
-          make
+          make CC="zig cc" CXX="zig c++"
         '';
 
         installPhase = ''
