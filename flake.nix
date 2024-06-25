@@ -36,7 +36,7 @@
         ];
 
         buildPhase = ''
-          make CC="zig cc" CXX="zig c++"
+          make
         '';
 
         installPhase = ''
@@ -46,6 +46,8 @@
         '';
 
         env = {
+          # CC = "zig cc";
+          # CXX = "zig c++";
           BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
           BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
           GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
