@@ -16,7 +16,25 @@
   in {
     devShells = forEachSupportedSystem ({pkgs}: {
       default = pkgs.mkShell {
-        packages = with pkgs; [zig];
+        packages = with pkgs; [
+          boost
+          gnumake
+          gtest
+          zlib
+          zig
+        ];
+
+        env = {
+          CC = "zig cc";
+          CXX = "zig c++";
+          BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
+          BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
+          GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
+          GTEST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.gtest}/lib";
+          GTEST_ROOT = "${pkgs.gtest}";
+          LD_LIBRARY_PATH = "${pkgs.lib.getLib pkgs.gtest}/lib";
+          LIBCLANG_PATH = "${pkgs.lib.getLib pkgs.llvmPackages.libclang.lib}/lib";
+        };
       };
     });
 
@@ -46,8 +64,8 @@
         '';
 
         env = {
-          # CC = "zig cc";
-          # CXX = "zig c++";
+          CC = "zig cc";
+          CXX = "zig c++";
           BOOST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.boost}/include";
           BOOST_LIBRARYDIR = "${pkgs.lib.getLib pkgs.boost}/lib";
           GTEST_INCLUDEDIR = "${pkgs.lib.getDev pkgs.gtest}/include";
