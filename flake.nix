@@ -61,7 +61,7 @@
           ];
 
           buildPhase = ''
-            make
+            zig build
           '';
 
           installPhase = ''
