@@ -12,3 +12,5 @@ target/
 *.fastq.gz
 *.fa
 dragmap/
+/zig-cache/
+/zig-out/
