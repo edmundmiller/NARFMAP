@@ -1,19 +1,26 @@
 const std = @import("std");
 
-pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+const c = @cImport({
+    @cInclude("GenHashTableWorkflow.hpp");
+});
 
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout_file = std.io.getStdOut().writer();
-    var bw = std.io.bufferedWriter(stdout_file);
-    const stdout = bw.writer();
+pub fn main() void {
+    // Example usage of functions from the C++ header
+    const fullPath = c.dragenos.workflow.GetFullPath("some/path");
+    std.debug.print("Full path: {s}\n", .{fullPath});
 
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
+    // Note: You might need to handle string conversion between Zig and C strings
 
-    try bw.flush(); // don't forget to flush!
+    // Example of using the HashTableType enum
+    c.dragenos.workflow.HT_TYPE_NORMAL;
+
+    // You would need to create DragenOsOptions and hashTableConfig_t structs
+    // to use functions like SetBuildHashTableOptions
+    // var opts: c.options.DragenOsOptions = undefined;
+    // var config: c.hashTableConfig_t = undefined;
+    // c.dragenos.workflow.SetBuildHashTableOptions(&opts, &config, hashType);
+
+    // Call other functions as needed
 }
 
 test "simple test" {

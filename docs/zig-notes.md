@@ -69,3 +69,19 @@ pub fn build(b: *std.Build) void {
     b.getInstallStep().dependOn(&install_artifact.step);
 }
 ```
+
+## Examples
+
+https://github.com/blark/mmdvmhost-zig/blob/main/build.zig
+
+# Linking
+
+Time to figure out if I can teach the monkey to juggle...
+
+https://stackoverflow.com/questions/76499404/how-to-link-against-a-static-library
+https://zig.news/xq/zig-build-explained-part-3-1ima
+
+## Needs a C wrapper
+
+https://github.com/gardc/zig-cpp-interop/blob/main/cpp-src/wrapper.h
+https://stackoverflow.com/questions/73467232/how-to-incorporate-the-c-standard-library-into-a-zig-program
