@@ -1,6 +1,8 @@
 const std = @import("std");
 
 const c = @cImport({
+    @cDefine("__cplusplus", "201703L");
+    @cDefine("BOOST_ALL_NO_LIB", {});
     @cInclude("GenHashTableWorkflow.hpp");
 });
 
@@ -8,8 +10,6 @@ pub fn main() void {
     // Example usage of functions from the C++ header
     const fullPath = c.dragenos.workflow.GetFullPath("some/path");
     std.debug.print("Full path: {s}\n", .{fullPath});
-
-    // Note: You might need to handle string conversion between Zig and C strings
 
     // Example of using the HashTableType enum
     c.dragenos.workflow.HT_TYPE_NORMAL;

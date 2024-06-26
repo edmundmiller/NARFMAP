@@ -85,3 +85,9 @@ https://zig.news/xq/zig-build-explained-part-3-1ima
 
 https://github.com/gardc/zig-cpp-interop/blob/main/cpp-src/wrapper.h
 https://stackoverflow.com/questions/73467232/how-to-incorporate-the-c-standard-library-into-a-zig-program
+
+# Back to the drawing board
+
+Looked and building the hashmap is actually just a C library already.
+
+I think I can do the alignment writing if that's all and the conversion. I can use HTSlib like [this package](https://github.com/brentp/hts-zig/blob/main/build.zig) for all of the lowerlevel stuff.
