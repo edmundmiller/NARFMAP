@@ -16,41 +16,12 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-
-    // Step 3: Link C++ libraries with Zig executable
-    // Assuming the Makefile produces a static library named libdragen.a
-    exe.addObjectFile(.{ .path = "build/release/libdragmap-workflow.a" });
-    exe.linkLibCpp(); // Link with C++ standard library
-
-    // Add any necessary include directories
-    exe.addIncludePath(.{ .path = "src/include/workflow/" });
-
-    // Get Boost library and include directories from environment variables
-    const boost_lib_dir = std.process.getEnvVarOwned(b.allocator, "BOOST_LIBRARYDIR") catch |err| {
-        std.debug.print("Error: BOOST_LIBRARYDIR environment variable not set. {}\n", .{err});
-        std.process.exit(1);
-    };
-    defer b.allocator.free(boost_lib_dir);
-
-    const boost_include_dir = std.process.getEnvVarOwned(b.allocator, "BOOST_INCLUDEDIR") catch |err| {
-        std.debug.print("Error: BOOST_INCLUDEDIR environment variable not set. {}\n", .{err});
-        std.process.exit(1);
-    };
-    defer b.allocator.free(boost_include_dir);
-
-    // Add Boost library path
-    // exe.addLibPath(boost_lib_dir);
-
-    // Link Boost libraries
-    exe.linkSystemLibrary("boost_system");
-    exe.linkSystemLibrary("boost_filesystem");
-    // Add other Boost libraries as needed
-
-    // Add Boost include directory
-    exe.addLibraryPath(.{ .path = boost_lib_dir });
-
+    exe.addIncludePath(.{ .path = "thirdparty/dragen/src/common/hash_generation/" }); // Look for C source files
+    exe.linkLibC();
+    exe.linkSystemLibrary("z");
+    exe.defineCMacro("LOCAL_BUILD", null);
     // Make sure the C++ build is complete before linking
-    exe.step.dependOn(&make_step.step);
+    // exe.step.dependOn(&make_step.step);
 
     // Install the final executable
     b.installArtifact(exe);
